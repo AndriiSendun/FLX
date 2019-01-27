@@ -22,21 +22,20 @@ body {
   nav {
     display: flex;
     justify-content: space-around;
+  }
 
-    a {
-      text-decoration: none;
-      color: $linkColor;
-      text-transform: uppercase;
-      padding: 10px 100px;
+  a {
+    text-decoration: none;
+    color: $linkColor;
+    text-transform: uppercase;
+    padding: 10px 100px;
 
-      &:nth-of-type(2) {
-        border-left: 2px solid $linkBorder;
-        border-right: 2px solid $linkBorder;
-      }
+    &:not(:last-child) {
+      border-right: 2px solid $linkBorder;
     }
   }
 
-  +section {
+  & + section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,7 +47,6 @@ body {
       text-transform: uppercase;
     }
   }
-
 }
 
 header {
@@ -121,7 +119,7 @@ main {
       flex-basis: 27%;
     }
 
-    &>div {
+    & > div {
       flex-basis: 70%;
       padding-left: 10px;
     }
@@ -146,7 +144,7 @@ main {
     color: $paragraphColor;
   }
 
-  +button {
+  & + button {
     display: block;
     margin-left: auto;
     margin-top: 20px;
@@ -214,9 +212,12 @@ main {
 }
 
 .form__item {
-  >div {
-    text-align: end;
-    color: $inputColor;
+  display: block;
+  text-align: right;
+  color: $inputColor;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
   }
 }
 
