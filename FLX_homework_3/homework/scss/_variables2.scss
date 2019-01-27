@@ -1,0 +1,36 @@
+$silverColor: #E9E9E9;
+$lightGrey: #607D8F;
+$whiteSmoke: #EFEFEF;
+$red: #ff0000;
+$white: #ffffff;
+$gansbaro: #D2DADE;
+$black: #000000;
+$blue: #0401AC;
+$black-60: lighten($black, 60%);
+$black-50: lighten($black, 50%);
+$font-size: 18px;
+$line-height: 26px;
+
+$bodyBg: $whiteSmoke;
+$headerImg: "../img/header_background_v2.jpg";
+$font: normal #{$font-size}/#{$line-height} "Palatino Linotype","Book Antiqua",Palatino,serif;
+$linkColor: $red;
+$linkBorder: $white;
+$headerTitle: $red;
+$btnColor: $silverColor;
+$btnBgColor: $blue;
+$inputPlaceholder: $black-50;
+$inputBorder: $gansbaro;
+$inputBg: $whiteSmoke;
+$postListTitle: $black-50;
+$articleBg: $white;
+$articleTitle: $lightGrey;
+$articleDate: $gansbaro;
+$articleTitleBorder: $gansbaro;
+$paragraphColor: $black-60;
+$aboutTitle: $black-50;
+$formTitle: $black-50;
+$formSubTitle: $black-60;
+$inputColor: $lightGrey;
+$footerColor: $black-50;
+

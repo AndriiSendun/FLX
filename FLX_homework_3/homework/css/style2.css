@@ -1,0 +1,169 @@
+body {
+  font: normal 18px/26px "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  margin: 0;
+  padding: 0; }
+
+.main-wrapper {
+  background: #EFEFEF; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; }
+
+.top-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; }
+  .top-wrapper nav {
+    display: flex;
+    justify-content: space-around; }
+    .top-wrapper nav a {
+      text-decoration: none;
+      color: #ff0000;
+      text-transform: uppercase;
+      padding: 10px 100px; }
+      .top-wrapper nav a:nth-of-type(2) {
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #ffffff; }
+  .top-wrapper + section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto 0; }
+    .top-wrapper + section h1 {
+      color: #ff0000;
+      text-transform: uppercase; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-image: url("../img/header_background_v2.jpg");
+  background-size: cover;
+  background-position: center; }
+
+img {
+  width: 100%;
+  height: auto; }
+
+.logo {
+  width: 150px; }
+
+.btn {
+  cursor: pointer;
+  color: #E9E9E9;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 7px 60px;
+  background: #0401AC;
+  border: none; }
+
+.btn-top {
+  padding: 12px 70px; }
+
+main {
+  padding: 20px 200px; }
+
+.toolbar {
+  text-align: end;
+  margin-right: 10px; }
+  .toolbar input {
+    border: 1px solid #D2DADE;
+    padding: 10px 15px;
+    background: #EFEFEF; }
+    .toolbar input::placeholder {
+      color: gray; }
+
+.post-list h1 {
+  text-transform: uppercase;
+  text-align: end;
+  margin-bottom: 0;
+  color: gray; }
+.post-list article {
+  display: flex;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #ffffff; }
+  .post-list article img {
+    flex-basis: 27%; }
+  .post-list article > div {
+    flex-basis: 70%;
+    padding-left: 10px; }
+
+.post-description {
+  color: #D2DADE;
+  margin: 10px 0; }
+
+.post h3 {
+  color: #607D8F;
+  text-transform: uppercase;
+  margin: 0;
+  border-top: 1px solid #D2DADE; }
+.post p {
+  margin: 0;
+  color: #999999; }
+.post + button {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px; }
+
+.about {
+  padding: 10px; }
+  .about h1 {
+    margin: 30px 0 0 0;
+    text-align: end;
+    text-transform: uppercase;
+    color: gray; }
+  .about p {
+    color: #999999; }
+    .about p:nth-of-type(1) {
+      margin-top: 0; }
+
+.contact-form {
+  margin-top: 30px; }
+  .contact-form h1,
+  .contact-form h4 {
+    text-align: end;
+    margin: 0;
+    text-transform: uppercase; }
+  .contact-form h1 {
+    color: gray; }
+  .contact-form h4 {
+    color: #999999; }
+
+.top-form-field {
+  display: flex;
+  justify-content: space-between; }
+
+.form__input {
+  width: 100%;
+  padding: 10px;
+  background: #EFEFEF;
+  border: 1px solid #D2DADE; }
+
+.top-form-field .form__item:nth-child(1) {
+  width: 50%; }
+.top-form-field .form__item:nth-child(2) {
+  width: 49%; }
+
+.form__item > div {
+  text-align: end;
+  color: #607D8F; }
+
+.form {
+  margin-top: 20px; }
+  .form button {
+    display: block;
+    margin-left: auto; }
+
+.text-area {
+  width: 100%;
+  margin: 20px 0 10px 0; }
+
+footer {
+  color: gray;
+  padding: 10px; }
+
+/*# sourceMappingURL=style2.css.map */
