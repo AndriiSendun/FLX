@@ -1,0 +1,333 @@
+/*
+ * Feel free to change name of colors if you need it
+ * Feel free to add new colors if you need it
+ */
+body {
+  font-family: roboto;
+}
+
+.post-1 {
+  background: #B71757;
+}
+
+.post-2 {
+  background: #0D7E71;
+}
+
+.post-3 {
+  background: #b1660e;
+}
+
+.post-4 {
+  background: #d12767;
+}
+
+.post-5 {
+  background: #2d95bb;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0b192f;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.header {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: #162b4d;
+}
+
+.header__logo {
+  font-size: 2rem;
+  font-weight: 200;
+  margin: 20px 0 20px 15px;
+  color: #fff;
+}
+
+.header__logo-txt:not(:nth-of-type(1)) {
+  color: #B71757;
+}
+
+.nav {
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 30%;
+  margin-right: 50px;
+}
+
+.burger-menu {
+  display: none
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+  text-decoration: none;
+  font-weight: 300;
+  color: #fff;
+}
+
+.nav__item:hover {
+  background-color: #b8b8b821;
+}
+
+.content {
+  flex-wrap: wrap;
+  width: 75%;
+}
+
+.post {
+  position: relative;
+}
+
+.post::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+}
+
+.post:hover {
+  cursor: pointer;
+}
+
+.post:nth-of-type(1):hover::after {
+  background-color: #B71757;
+}
+
+.post:nth-of-type(2):hover::after {
+  background-color: #0D7E71;
+}
+
+.post:nth-of-type(3):hover::after {
+  background-color: #b1660e;
+}
+
+.post:nth-of-type(4):hover::after {
+  background-color: #d12767;
+}
+
+.post:nth-of-type(5):hover::after {
+  background-color: #2d95bb;
+}
+
+.post-article {
+  flex:1 0 50%;
+}
+
+.post-article__description p {
+  line-height: 1.7;
+  color: #ffffff86;
+}
+
+.post-article__title {
+  margin-bottom: 20px;
+  font-weight: 200;
+  font-size: 3.5vw;
+  line-height: 0.9;
+  color: #fff;
+}
+
+.post-article__date {
+  font-size: 2vw;
+  font-weight: 200;
+  padding:15px 10px 0;
+  color: #ffffff44
+}
+
+.number {
+  font-size: 3.5vw;
+}
+
+.aside-posts {
+  margin-left: 20px;
+  width: 25%;
+}
+
+.aside-post:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.aside-post {
+  background-color: #ffffff;
+}
+
+.aside-article {
+  padding: 0 30px 30px;
+}
+
+.aside-article p {
+  line-height: 1.5;
+  color: #868383;
+}
+
+.aside-article__title {
+  font-weight: 400;
+}
+
+.footer {
+  justify-content: space-between;
+  padding: 40px 30px;
+  margin-top: 20px;
+  background-color: #162b4d;
+  color: #ffffff3b
+}
+
+.footer__paragraph {
+  margin: 0;
+}
+
+.footer__right-item {
+  width: 150px;
+}
+
+.post:nth-child(even) .post-img {
+  order: 2;
+}
+
+
+.post:nth-child(odd) .post-article__description {
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+.post:nth-child(even) .post-article__description {
+  order: 2;
+  padding-right: 30px;
+  padding-left: 10px;
+  text-align: end;
+}
+
+
+@media screen and (max-width: 768px) {
+  .post:nth-child(even) .post-article__date {
+    order: 2;
+  }
+
+  .content .post .post-article__description {
+    text-align: start;
+    padding: 0;
+  }
+
+  .wrapper {
+    padding: 0 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__logo {
+    margin: 50px auto;
+    order: 2;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .burger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 15px;
+    width: 20px;
+    height: 15px;
+  }
+
+  .burger-menu__item {
+    height: 1px;
+    background-color: #ffffff;
+  }
+
+  .content {
+    width: 60%;
+  }
+
+  .post {
+    flex-direction: column;
+  }
+
+  .aside-article p,
+  .post-article__description p {
+    font-size: 0.8rem;
+  }
+
+  .post-article {
+    order: 2;
+    flex-direction: column;
+    padding: 0 30px;
+  }
+
+  .post-article__title {
+    font-size: 2.5rem;
+  }
+
+  .post-article__date {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+
+  .number {
+    display: block;
+    font-size: 2.5rem;
+  }
+
+  .post-img{
+    flex: 1;
+  }
+
+  .aside-posts {
+    width: 40%
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .content,
+  .aside-posts {
+    width: 100%;
+  }
+
+  .aside-posts {
+    margin-left: 0;
+  }
+}
