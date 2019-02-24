@@ -205,9 +205,8 @@
   }
 
   function dragOver(e) {
-    if (e.preventDefault) {
-      e.preventDefault();
-    }
+    e.preventDefault();
+
     this.classList.add('drag-over');
     e.dataTransfer.dropEffect = 'move';
 
@@ -219,9 +218,7 @@
   }
 
   function dragDrop(e) {
-    if (e.stopPropagation) {
-      e.stopPropagation();
-    }
+    e.stopPropagation();
 
     if (dragSource !== this) {
       this.parentNode.removeChild(dragSource);
