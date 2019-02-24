@@ -218,6 +218,7 @@
   }
 
   function dragDrop(e) {
+    const zero = 0;
     e.stopPropagation();
 
     if (dragSource !== this) {
@@ -226,6 +227,12 @@
       this.insertAdjacentHTML('beforebegin', dropHTML);
       const dropElem = this.previousSibling;
       addDragEvents(dropElem);
+      const checkbox = dragSource.querySelector('.todo-item__checkbox');
+      console.log(checkbox);
+
+      if (checkbox.checked) {
+        dropElem.children[zero].checked = true;
+      }
     }
 
     this.classList.remove('drag-over');
