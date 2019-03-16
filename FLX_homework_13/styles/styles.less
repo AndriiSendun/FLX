@@ -1,0 +1,62 @@
+@import 'variables';
+
+.navbar {
+  padding: 0;
+}
+
+.nav-item.active {
+  background: @linkActive;
+
+  .nav-link {
+    color: #ffffff !important;
+  }
+}
+
+.title {
+  color: @title;
+}
+
+.title--section {
+  border-bottom: 1px solid @titleBorder;
+}
+
+.related-class {
+  border-width: 1px;
+  border-style: solid;
+}
+
+.related-class--cardio {
+  border-color: @cardioBorder;
+
+  .related-class__caption {
+    background: @cardioCaptionBg;
+  }
+}
+
+.related-class--fitness {
+  border-color: @fitnessBorder;
+
+  .related-class__caption {
+    background: @fitnessCaptionBg;
+  }
+}
+
+.related-class--zumba {
+  border-color: @zumbaBorder;
+
+  .related-class__caption {
+    background: @zumbaCaptionBg;
+  }
+}
+
+.related-class--bootcamp {
+  border-color: @bootcampBorder;
+
+  .related-class__caption {
+    background: @bootcampCaptionBg;
+  }
+}
+
+.footer__content {
+  background: @footerContentBg;
+}
