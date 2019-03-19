@@ -64,11 +64,13 @@ $(document).on('ready', function () {
           'data-was-processed': false,
           'data-bg': `url(${bgMap[i].url})`
         });
+
         new LazyLoad({
           elements_selector: '#home',
           load_delay: 300,
-          data_bg: bgMap[i].url
+          data_bg: `url(${bgMap[i].url})`
         });
+
         break;
       }
     }
