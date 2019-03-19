@@ -60,15 +60,14 @@ $(document).on('ready', function () {
 
     for (let i = 0; i < bgMap.length; i++) {
       if($(this).width() < bgMap[i].breakpoint) {
-        $('#home').attr({
-          'data-was-processed': false,
-          'data-bg': `url(${bgMap[i].url})`
-        });
-
         new LazyLoad({
           elements_selector: '#home',
-          load_delay: 300,
-          data_bg: `url(${bgMap[i].url})`
+          callback_enter: function(el) {
+            $(el).attr({
+              'data-was-processed': false,
+              'data-bg': `url(${bgMap[i].url})`
+            });
+          }
         });
 
         break;
