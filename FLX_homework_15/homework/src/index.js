@@ -16,27 +16,13 @@ function Company(name, owner, maxCount) {
 
   let _logs = [];
   const _companyList = [];
-  const actions = {
-    add: 'Adding new employee',
-    fire: 'Fire employee',
-    averageSalary: 'Checking of average salary',
-    employees: 'Check information about employees',
-    averageAge: 'Checking of average age'
-  };
+
+  _logs.push(`${this.name} was created in ${new Date()}`);
 
   this.getAverage = function (targetArr) {
     const reducedTarget = targetArr.reduce((acc, cur) => acc + cur);
 
     return reducedTarget / _companyList.length;
-  };
-
-  this.addLog = function (action) {
-    _logs.push({
-      action,
-      actionTime: new Date().toLocaleString('en-US', {
-        hour12: false
-      })
-    });
   };
 
   this.addNewEmployee = function (employee) {
@@ -48,7 +34,7 @@ function Company(name, owner, maxCount) {
       }
 
       employee.hire(this);
-
+      _logs.push(`${employee.getName()} starts working at ${this.name} in ${new Date()}`);
       if (_companyList.length >= this.maxCount) {
         const firedEmployee = _companyList.reduce((acc, cur) => {
           if (cur.getSalary() < acc.getSalary()) {
@@ -62,10 +48,8 @@ function Company(name, owner, maxCount) {
       } else {
         _companyList.push(employee);
       }
-
-      this.addLog(actions.add);
     } else {
-      console.error('You have pass wrong arguments');
+      console.error('Please try to add Employee instance');
     }
   };
 
@@ -77,7 +61,6 @@ function Company(name, owner, maxCount) {
 
       employeeToRemove.fire();
       _companyList.splice(removeEmployeeIndex, one);
-      this.addLog(actions.fire);
     } else {
       console.error(`There is no employee with such id in company ${this.name}`);
     }
@@ -85,7 +68,6 @@ function Company(name, owner, maxCount) {
 
   this.getAverageSalary = function () {
     const salaryArr = _companyList.map((employee) => employee.getSalary());
-    this.addLog(actions.averageSalary);
 
     return parseFloat(this.getAverage(salaryArr).toFixed(two));
   };
@@ -103,8 +85,6 @@ function Company(name, owner, maxCount) {
       });
     }
 
-    this.addLog(actions.employees);
-
     return allEmployees;
   };
 
@@ -118,9 +98,8 @@ function Company(name, owner, maxCount) {
 
   this.getAverageAge = function () {
     const ageArr = _companyList.map((employee) => employee.getAge());
-    this.addLog(actions.averageAge);
 
-    return Math.round(this.getAverage(ageArr));
+    return parseFloat(this.getAverage(ageArr).toFixed(two));
   };
 
   this.getHistory = function () {
@@ -128,7 +107,7 @@ function Company(name, owner, maxCount) {
   };
 }
 
-function Employee(name, primarySkill, age, salary) {
+function Employee(name, age, salary, primarySkill) {
   if (!stringValidation(name, primarySkill) || !numberValidation(age, salary)) {
     console.error('Wrong employee DATA');
     return false;
@@ -144,19 +123,6 @@ function Employee(name, primarySkill, age, salary) {
   let totalWorkTime = 0;
   let _logs = [];
   let companyData;
-  const actions = {
-    fire: 'You are fired',
-    hire: 'You are hire'
-  };
-
-  this.addLog = function (action) {
-    _logs.push({
-      action,
-      actionTime: new Date().toLocaleString('en-US', {
-        hour12: false
-      })
-    });
-  };
 
   this.getWorkStatus = function () {
     return workStatus;
@@ -183,14 +149,15 @@ function Employee(name, primarySkill, age, salary) {
   };
 
   this.getWorkSeconds = function (time) {
-    return parseInt((new Date().getTime() - time) / thousand);
+    return parseFloat((new Date().getTime() - time) / thousand);
   };
 
   this.setSalary = function (newSalary) {
     if (newSalary > _salary) {
+      _logs.push(`change salary from ${_salary} to ${newSalary}`);
       _salary = parseFloat(newSalary.toFixed(two));
     } else if (newSalary < _salary) {
-      console.error('Cannot set smaller salary than employee has now');
+      _logs.push(`try to change salary from ${_salary} to ${newSalary}`);
     } else if (!numberValidation(newSalary)) {
       console.error(`New salary:${newSalary} is not a number`);
     }
@@ -215,15 +182,14 @@ function Employee(name, primarySkill, age, salary) {
       startTime: new Date().getTime()
     };
 
-    this.addLog(actions.hire);
+    _logs.push(`${_name} is hired to ${companyData.name} in ${new Date()}`);
   };
 
   this.fire = function () {
     workStatus = false;
     totalWorkTime += companyData.startTime;
-    companyData = null;
 
-    this.addLog(actions.fire);
+    _logs.push(`${_name} is fired from ${companyData.name} in ${new Date()}`);
   };
 
   this.getHistory = function () {
@@ -255,51 +221,37 @@ function numberValidation(...arg) {
   return testedArr.length === arg.length;
 }
 
+let artem = new Employee("Artem", 15, 1000, "UX");
+let vova = new Employee("Vova", 16, 2000, "BE");
+let vasyl = new Employee("Vasyl", 25, 1000, "FE");
+let ivan = new Employee("Ivan", 35, 5000, "FE");
+let orest = new Employee("Orest", 29, 300, "AT");
+let anton = new Employee("Anton", 19, 500, "Manager");
 
-/* const company1 = new Company('Microsoft', 'Bill Gates', 2);
-const company2 = new Company('Apple', 'Steve Jobs', 3);
-const company3 = new Company('123', 'bill', 2);
-const company4 = new Company('Intel', 'Gordon Moore', 2);
+let epam = new Company("Epam", "Arkadii", 5);
+epam.addNewEmployee(artem);
+epam.addNewEmployee(vova);
+epam.addNewEmployee(vasyl);
+epam.addNewEmployee(ivan);
+epam.addNewEmployee(orest);
+epam.addNewEmployee(anton);
+
+console.log(epam.getHistory());
+
+epam.removeEmployee(vasyl); //I add removeEmployee by employee;
+console.log(vasyl.getHistory());
+
+console.log(epam.getAverageSalary());
+console.log(epam.getAverageAge());
+
+epam.addNewEmployee(5, 6, 9, 5);
+
+setTimeout(() => {
+  epam.removeEmployee(vova);
+  console.log(artem.getWorkTimeInSeconds());
+}, 5000);
 
 
-const emp1 = new Employee('Adam1', 'soft', 20, 2500);
-const emp2 = new Employee('Adam2', 'soft', 25, 2500);
-const emp3 = new Employee('Adam3', 'soft', 27, 3000);
-const emp4 = new Employee('Adam4', 'soft', 25, 2500);
-const emp5 = new Employee('Adam5', 'soft', 29, 2500);
-const emp6 = new Employee('123', 'soft', 29, 2500);
-const emp7 = new Employee('Adam 7', 'soft', 29, 2500);
-
-
-company1.addNewEmployee(emp1);
-company1.addNewEmployee(emp2);
-company1.addNewEmployee(emp3);
-
-company2.addNewEmployee(emp1);
-company2.addNewEmployee(emp4);
-company2.addNewEmployee(emp5);
-
-company2.removeEmployee(emp5);
-
-console.log(company1.getAverageAge());
-console.log(company2.getAverageAge());
-
-console.log(company1.getAverageSalary());
-console.log(company2.getAverageSalary());
-
-console.table(company1.getEmployees());
-console.table(company2.getEmployees());
-
-console.log(company1.getFormattedListOfEmployees());
-console.log(company1.getHistory());
-
-console.log(emp1.getSalary());
-
-emp1.setSalary('str');
-emp1.setSalary(4352);
-
-console.log(emp1.getSalary());
-console.log(company2.getAverageSalary());
-console.table(company2.getEmployees());
-console.log(emp1.getHistory());
-console.log(emp1.getWorkTimeInSeconds()); */
+vova.setSalary(900);
+vova.setSalary(2200);
+console.log(vova.getHistory());
