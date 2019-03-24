@@ -221,7 +221,7 @@ function numberValidation(...arg) {
   return testedArr.length === arg.length;
 }
 
-let artem = new Employee("Artem", 15, 1000, "UX");
+/* let artem = new Employee("Artem", 15, 1000, "UX");
 let vova = new Employee("Vova", 16, 2000, "BE");
 let vasyl = new Employee("Vasyl", 25, 1000, "FE");
 let ivan = new Employee("Ivan", 35, 5000, "FE");
@@ -254,4 +254,4 @@ setTimeout(() => {
 
 vova.setSalary(900);
 vova.setSalary(2200);
-console.log(vova.getHistory());
+console.log(vova.getHistory()); */
