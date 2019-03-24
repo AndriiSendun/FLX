@@ -14,7 +14,7 @@ function Company(name, owner, maxCount) {
   this.owner = owner;
   this.maxCount = maxCount;
 
-  let _logs = [];
+  const _logs = [];
   const _companyList = [];
 
   _logs.push(`${this.name} was created in ${new Date()}`);
@@ -33,8 +33,6 @@ function Company(name, owner, maxCount) {
         return false;
       }
 
-      employee.hire(this);
-      _logs.push(`${employee.getName()} starts working at ${this.name} in ${new Date()}`);
       if (_companyList.length >= this.maxCount) {
         const firedEmployee = _companyList.reduce((acc, cur) => {
           if (cur.getSalary() < acc.getSalary()) {
@@ -44,21 +42,23 @@ function Company(name, owner, maxCount) {
           return acc;
         });
         this.removeEmployee(firedEmployee);
-        _companyList.push(employee);
-      } else {
-        _companyList.push(employee);
       }
+
+      _companyList.push(employee);
+      employee.hire(this);
+      _logs.push(`${employee.getName()} starts working at ${this.name} in ${new Date()}`);
+
     } else {
       console.error('Please try to add Employee instance');
     }
   };
 
   this.removeEmployee = function (employeeToRemove) {
+    employeeToRemove = typeof employeeToRemove === 'number' ? _companyList[employeeToRemove] : employeeToRemove;
     const employeeToRemoveId = employeeToRemove.getId();
     const removeEmployeeIndex = _companyList.findIndex((employee) => employee.getId() === employeeToRemoveId);
 
     if (~removeEmployeeIndex) {
-
       employeeToRemove.fire();
       _companyList.splice(removeEmployeeIndex, one);
     } else {
@@ -73,19 +73,17 @@ function Company(name, owner, maxCount) {
   };
 
   this.getEmployees = function () {
-    const allEmployees = [];
-
-    for (let i = 0; i < _companyList.length; i++) {
-      allEmployees.push({
-        name: _companyList[i].getName(),
-        primarySkill: _companyList[i].getSkill(),
-        age: _companyList[i].getAge(),
-        salary: _companyList[i].getSalary(),
-        id: _companyList[i].getId()
+    return _companyList.reduce((acc, cur) => {
+      acc.push({
+        name: cur.getName(),
+        primarySkill: cur.getSkill(),
+        age: cur.getAge(),
+        salary: cur.getSalary(),
+        id: cur.getId()
       });
-    }
 
-    return allEmployees;
+      return acc;
+    }, []);
   };
 
   this.getFormattedListOfEmployees = function () {
@@ -118,14 +116,14 @@ function Employee(name, age, salary, primarySkill) {
   const _age = age;
   let _salary = salary;
 
-  const id = generateUniqId();
-  let workStatus = false;
-  let totalWorkTime = 0;
-  let _logs = [];
-  let companyData;
+  const _id = generateUniqId();
+  let _workStatus = false;
+  let _totalWorkTime = 0;
+  const _logs = [];
+  let _companyData;
 
   this.getWorkStatus = function () {
-    return workStatus;
+    return _workStatus;
   };
 
   this.getName = function () {
@@ -145,7 +143,7 @@ function Employee(name, age, salary, primarySkill) {
   };
 
   this.getId = function () {
-    return id;
+    return _id;
   };
 
   this.getWorkSeconds = function (time) {
@@ -164,32 +162,35 @@ function Employee(name, age, salary, primarySkill) {
   };
 
   this.getCurrentWorkTime = function () {
-    return this.getWorkSeconds(companyData.startTime);
+    return this.getWorkSeconds(_companyData.startTime);
   };
 
   this.getWorkTimeInSeconds = function () {
-    if (totalWorkTime) {
-      return this.getWorkSeconds(totalWorkTime);
+    if (_totalWorkTime && _companyData) {
+      return _totalWorkTime + this.getCurrentWorkTime();
+    } else if (_companyData) {
+      return this.getCurrentWorkTime();
     } else {
-      return this.getWorkSeconds(companyData.startTime);
+      return _totalWorkTime;
     }
   };
 
   this.hire = function (company) {
-    workStatus = true;
-    companyData = {
+    _workStatus = true;
+    _companyData = {
       name: company.name,
       startTime: new Date().getTime()
     };
 
-    _logs.push(`${_name} is hired to ${companyData.name} in ${new Date()}`);
+    _logs.push(`${_name} is hired to ${_companyData.name} in ${new Date()}`);
   };
 
   this.fire = function () {
-    workStatus = false;
-    totalWorkTime += companyData.startTime;
+    _workStatus = false;
+    _totalWorkTime += this.getCurrentWorkTime();
 
-    _logs.push(`${_name} is fired from ${companyData.name} in ${new Date()}`);
+    _logs.push(`${_name} is fired from ${_companyData.name} in ${new Date()}`);
+    _companyData = null;
   };
 
   this.getHistory = function () {
@@ -238,7 +239,7 @@ epam.addNewEmployee(anton);
 
 console.log(epam.getHistory());
 
-epam.removeEmployee(vasyl); //I add removeEmployee by employee;
+epam.removeEmployee(2);
 console.log(vasyl.getHistory());
 
 console.log(epam.getAverageSalary());
@@ -247,11 +248,13 @@ console.log(epam.getAverageAge());
 epam.addNewEmployee(5, 6, 9, 5);
 
 setTimeout(() => {
-  epam.removeEmployee(vova);
-  console.log(artem.getWorkTimeInSeconds());
+  epam.removeEmployee(1);
+  console.log(artem.getWorkTimeInSeconds()); // -&gt; 5.5744444444444445
 }, 5000);
+
 
 
 vova.setSalary(900);
 vova.setSalary(2200);
-console.log(vova.getHistory()); */
+console.log(vova.getHistory());
+console.log(epam.getEmployees()); */
