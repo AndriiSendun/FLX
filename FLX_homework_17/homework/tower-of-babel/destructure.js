@@ -10,7 +10,7 @@ const json = {
   }
 };
 
-const {name: {family: familyName}, birth: {day: birthDay}} = json;
+const { name: { family: familyName }, birth: { day: birthDay } } = json;
 
 console.log(familyName);
 console.log(birthDay);

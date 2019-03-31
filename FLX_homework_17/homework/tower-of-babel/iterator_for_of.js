@@ -5,10 +5,6 @@ const FizzBuzz = {
 
     return {
       next() {
-        if (number > max) {
-          return { done: true };
-        }
-
         let value = number;
         if (number % 3 === 0 && number % 5 === 0) {
           value = 'FizzBuzz';
@@ -20,7 +16,7 @@ const FizzBuzz = {
         number++;
 
         return {
-          done: false,
+          done: number > max ? true : false,
           value
         };
       }

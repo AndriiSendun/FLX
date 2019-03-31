@@ -19,6 +19,6 @@ const fizzBuzz = function*() {
   }
 }();
 
-for (var n of fizzBuzz) {
+for (let n of fizzBuzz) {
   console.log(n);
 }
