@@ -1,0 +1,24 @@
+<div class="movie-info">
+  <div class="movie">
+    {{console.log(movie)}}
+    <div class="movie__main-info">
+      <h2 class="movie__title">{{::$ctrl.movie.title}}</h2>
+      <span><strong>Genres: </strong></span>
+      <span ng-repeat="genre in $ctrl.movie.genres">
+        <span class="genre">{{genre}}</span>
+      </span>
+      <div><strong>Film Duration:</strong>{{::$ctrl.movie.runtime}} minutes</div>
+      <h3 ng-if="$ctrl.movie.tagline">{{::$ctrl.movie.tagline}}</h3>
+      <p><strong>Release date:</strong> {{$ctrl.movie.release_date}}</p>
+      <p>{{::$ctrl.movie.overview}}</p>
+    </div>
+    <div class="movie__additional-info">
+      <div class="movie__rating">
+        <div><strong>Vote average: </strong>{{::$ctrl.movie.vote_average}}</div>
+        <div><strong>Vote count: </strong>{{::$ctrl.movie.vote_count}}</div>
+      </div>
+      <img src="{{$ctrl.movie.poster_path}}" alt="{{$ctrl.movie.title}}">
+    </div>
+  </div>
+  <a class="btn-back" ui-sref="app">Back</a>
+</div>

@@ -1,0 +1,18 @@
+<div class="filter-box">
+  <label><span class="filter-box__span">Search: </span><input class="filter-box__input" ng-model="search.title"></label>
+  <button class="filter-box__btn-sort" ng-click="order = 'title'">Sort by name</button>
+</div>
+<div class="movies">
+  <a ng-repeat="movie in $ctrl.movies | orderBy: order | filter:search track by $index"
+     class="movies__overview"
+     fresh-movie
+     ui-sref="movie-info({ movieId: movie.id })"
+     >
+    <h2>{{movie.title}}</h2>
+    <div>
+      <img src="{{movie.poster_path}}"
+           alt="{{movie.title}}">
+      <p>{{movie.overview ? movie.overview : 'No description available'}}</p>
+    </div>
+  </a>
+</div>

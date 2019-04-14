@@ -1,0 +1,46 @@
+.movie-info {
+  max-width: 800px;
+  margin: 30px auto 20px;
+}
+
+.movie__main-info {
+  margin-right: 40px;
+}
+
+.movie__title {
+  font-size: 2.5rem;
+}
+
+.movie {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    max-width: 350px;
+    border-radius: 15px
+  }
+
+  p {
+    margin: 5px 0;
+  }
+}
+
+.movie__rating {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.btn-back {
+  display: block;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #a09c9c;
+  margin: 30px auto 0;
+  width: fit-content;
+
+  &:hover {
+    color: white;
+    background: #a09c9c;
+  }
+}
