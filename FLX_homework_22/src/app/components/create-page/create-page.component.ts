@@ -32,7 +32,6 @@ export class CreatePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.employeeForm);
   }
 
   createNewEmployee() {
