@@ -1,0 +1,14 @@
+<div class="employee">
+  <div class="employee__name">{{employee.firstName}} {{employee.lastName}}</div>
+  <div class="buttons">
+    <button class="btn btn--round employee__btn--employee" (click)="onRemoveEmployeeClick()">
+      <i class="material-icons">delete</i>
+    </button>
+    <a routerLink="employee/edit/{{employee.id}}" class="btn btn--round employee__btn--employee">
+      <i class="material-icons">edit</i>
+    </a>
+    <a routerLink="employee/details/{{employee.id}}" class="btn btn--round employee__btn--employee">
+      <i class="material-icons">details</i>
+    </a>
+  </div>
+</div>

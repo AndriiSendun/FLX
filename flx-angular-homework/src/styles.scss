@@ -1,0 +1,61 @@
+body {
+  padding: 0;
+  margin: 0;
+  max-width: 700px;
+  margin: 20px auto 0;
+  padding: 20px;
+  box-shadow: 0px 0px 17px -7px rgba(0,0,0,0.75);
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+*,*::after,*::before {
+  box-sizing: border-box;
+}
+
+.header {
+  border-bottom: 1px solid black;
+  padding: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 5px;
+  border: 2px solid black;
+}
+
+.btn--round {
+  border-radius: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.btn--add,
+.btn--done {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 50px;
+  font-size: 3rem;
+}
+
+.employee-form__input {
+  border-radius: 5px;
+  padding: 5px;
+}
+
+input {
+  outline: none;
+}
