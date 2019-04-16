@@ -1,0 +1,29 @@
+<header class="header">View employee details</header>
+<a routerLink="/" class="btn btn--back">
+  <i class="material-icons">keyboard_backspace</i><span>Back</span>
+</a>
+<div class="details">
+  <div>
+    <span class="details__title">First name: </span><span>{{employee.firstName}}</span>
+  </div>
+  <div>
+    <span class="details__title">Last name: </span><span>{{employee.lastName}}</span>
+  </div>
+  <div>
+    <span class="details__title">Age: </span><span>{{employee.age}}</span>
+  </div>
+  <div>
+    <span class="details__title">Gender: </span><span>{{employee.gender}}</span>
+  </div>
+  <div>
+    <span class="details__title">City: </span><span>{{employee.city}}</span>
+  </div>
+  <div>
+    <span class="details__title">Summary: </span><span>{{employee.description}}</span>
+  </div>
+</div>
+
+<div class="buttons">
+  <a routerLink="/employee/edit/{{employee.id}}" class="btn btn--round btn--edit"><i class="material-icons">edit</i></a>
+  <a routerLink="/" class="btn btn--round btn--delete" (click)="onRemoveEmployeeClick()"><i class="material-icons">delete</i></a>
+</div>

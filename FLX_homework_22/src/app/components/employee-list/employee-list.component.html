@@ -1,0 +1,5 @@
+<app-employee
+  *ngFor="let employee of employees | filter : searchText"
+  [employee]="employee"
+  (removeEmployee)="onRemoveEmployeeClick($event)"
+></app-employee>
