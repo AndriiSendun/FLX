@@ -1,0 +1,75 @@
+@import 'variables';
+
+html {
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+
+*,*::after,*::before {
+  box-sizing: border-box;
+}
+
+.border_none {
+  border: none;
+}
+
+.header {
+  padding: 15px;
+  width: 100vw;
+  box-shadow: $shadow;
+  text-align: center;
+}
+
+.header__search {
+  margin-left: 10px;
+  border-bottom: 1px solid $searchInputBorderBtm;
+  outline: none;
+}
+
+.table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.table__head {
+  color: $white;
+  background: $tableHeadBg;
+}
+
+.table__body {
+  .person {
+    &:nth-child(odd) {
+      background: $tableOddRowBg;
+    }
+  }
+}
+
+.btn {
+  display: block;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  border-top: 1px solid $footerBorderTop;
+  padding: 5px;
+}
+
+.btn--remove {
+  background: $btnRemoveBg;
+  color: $white;
+  padding: 5px;
+}
+
+.btn--load-more {
+  padding: 10px 80px;
+  background: $btnLoadMoreBg;
+  box-shadow: $shadow;
+  border-radius: 20px;
+  margin: 0 auto;
+}
